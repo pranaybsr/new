@@ -1,0 +1,55 @@
+/* Reset body margins and padding */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background for video */
+    color: #fff;
+}
+
+/* JWPlayer container */
+#player {
+    position: relative;
+    width: 100%; /* Full width */
+    height: 100vh; /* Full height of the viewport */
+    max-height: 100%; /* Ensure it doesn't overflow */
+    background-color: #000; /* Black background for fallback */
+}
+
+/* Style for a loading spinner (optional) */
+#player:before {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #fff;
+    display: none; /* Hidden by default */
+}
+
+/* Show the loading spinner while the player is loading */
+#player.loading:before {
+    display: block;
+}
+
+/* Optional: Style the player controls (custom JWPlayer skin) */
+.jwplayer .jw-controlbar {
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: #fff;
+}
+
+.jwplayer .jw-slider-time {
+    background: #444; /* Dark slider background */
+}
+
+.jwplayer .jw-button-color {
+    color: #fff; /* White button icons */
+}
+
+/* Make player responsive */
+@media (max-width: 768px) {
+    #player {
+        height: 60vh; /* Smaller height for smaller screens */
+    }
+}
