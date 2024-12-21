@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link rel="stylesheet" href="./player.css">
+</head>
+<body>
+    <div id="player"></div>
+    <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+    <script>
+        // Function to set up the player with the Cloudflare Worker proxy
+        function setupPlayer(videoUrl) {
+            const proxyUrl = `https://square-frost-fe4f.pranaybhaskar526.workers.dev//?url=${encodeURIComponent(videoUrl)}`;
+
+            jwplayer("player").setup({
+                controls: true,
+                displaytitle: true,
+                autoplay: true,
+                playlist: [
+                    {
+                        file: proxyUrl, // Use the proxied URL
+                        type: "hls",
+                        label: "1080p",
+                        default: true
+                    }
+                ]
+            });
+        }
+
+        // Call the function with your video URL
+        setupPlayer("https://dai.google.com/ssai/event/HgaB-u6rSpGx3mo4Xu3sLw/master.m3u8");
+    </script>
+</body>
+</html>
